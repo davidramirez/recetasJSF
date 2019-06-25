@@ -32,12 +32,15 @@ public class Receta {
     public Receta() {
     }
 
-    public Receta(String titulo, String descripcion, int tiempoElaboracion, Dificultad dificultad) {
+    public Receta(int id, String titulo, String descripcion, int tiempoElaboracion, Dificultad dificultad) {
+        this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.tiempoElaboracion = tiempoElaboracion;
         this.dificultad = dificultad;
     }
+
+    
 
     public String getTitulo() {
         return titulo;
