@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package resources.org.recetas.dominio;
+package org.recetas.dominio;
 
 /**
  *
@@ -15,7 +15,7 @@ public class Receta {
     
     private String titulo;
     
-    //imaagen
+    private String imagenNombre;
     
     private String descripcion;
     
@@ -94,6 +94,16 @@ public class Receta {
     public void setId(int id) {
         this.id = id;
     }
+
+    public String getImagenNombre() {
+        return imagenNombre;
+    }
+
+    public void setImagenNombre(String imagenNombre) {
+        this.imagenNombre = imagenNombre;
+    }
+    
+    
 
     @Override
     public int hashCode() {
