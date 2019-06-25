@@ -9,28 +9,31 @@
                 xmlns:rich="http://richfaces.org/rich">
 
     <ui:define name="title">
-        //TODO titulo
+        #{recetaMB.receta.titulo}
     </ui:define>
 
-    
+
 
     <ui:define name="content">
-        <div class="row">
-            <div class="col">
-                <h1>//TODO titulo</h1>
-                <hr/>
-                <p>//TODO descripcion</p>
-            </div>
-            <div class="col">
-                <h:graphicImage library="img" name="//TODO name"/>
-            </div>
-        </div>
-        <div class="row">
-            <span class="alert border-primary">Dificultad://TODO dificultad  Tiempo: //TODO</span>
-        </div>
-        
+        <h1>#{recetaMB.receta.titulo}</h1>
         <hr/>
-        
+        <div class="row">
+            <div class="col-12 col-md-4">
+                <p>#{recetaMB.receta.descripcion}</p>
+
+                <div class="alert border-primary text-center p-1"> 
+                    <span class="bg-#{recetaMB.receta.dificultad.color}">Dificultad: #{recetaMB.receta.dificultad}</span> 
+                    <br/>
+                    <i class="far fa-clock"></i> #{recetaMB.receta.tiempoElaboracion} Minutos
+                </div>
+            </div>
+            <div class="col-12 col-md-8">
+                <h:graphicImage styleClass="img-fluid" library="img" name="#{recetaMB.receta.imagenNombre}"/>
+            </div>
+        </div>
+
+        <hr/>
+
     </ui:define>
 
 </ui:composition>

@@ -5,21 +5,41 @@
  */
 package org.recetas.web.beans;
 
+import java.io.Serializable;
+import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import org.recetas.dominio.Receta;
 
 /**
  *
  * @author david
  */
-@Named(value = "recetaManagedBean")
+@Named(value = "recetaMB")
 @ViewScoped
-public class RecetaManagedBean {
+public class RecetaManagedBean implements Serializable {
 
+    private Receta receta;
+    
+    @Inject
+    private AppManagedBean app;
     /**
      * Creates a new instance of RecetaManagedBean
      */
     public RecetaManagedBean() {
+        
     }
+    
+    @PostConstruct
+    public void cargaReceta(){
+        receta = app.getReceta();
+        
+    }
+
+    public Receta getReceta() {
+        return receta;
+    }
+    
     
 }

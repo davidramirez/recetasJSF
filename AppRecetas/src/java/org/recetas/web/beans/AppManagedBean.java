@@ -45,6 +45,9 @@ public class AppManagedBean {
         return listaRecetas;
     }
 
+    public Receta getReceta(){
+        return listaRecetas.get(0);
+    }
  
     
 }
