@@ -5,6 +5,8 @@
  */
 package org.recetas.dominio;
 
+import java.util.List;
+
 /**
  *
  * @author SISTEMAS
@@ -27,7 +29,11 @@ public class Receta {
     
     private int numValoracines;
     
-    //private List<Ingrediente> listaIngreedientes;
+    private List<Ingrediente> listaIngredientes;
+    
+    private List<String> listaUtensilios;
+    
+    private List<Paso> pasos;
 
     public Receta() {
     }
@@ -105,7 +111,30 @@ public class Receta {
     public void setImagenNombre(String imagenNombre) {
         this.imagenNombre = imagenNombre;
     }
-    
+
+    public List<Ingrediente> getListaIngredientes() {
+        return listaIngredientes;
+    }
+
+    public void setListaIngredientes(List<Ingrediente> listaIngredientes) {
+        this.listaIngredientes = listaIngredientes;
+    }
+
+    public List<String> getListaUtensilios() {
+        return listaUtensilios;
+    }
+
+    public void setListaUtensilios(List<String> listaUtensilios) {
+        this.listaUtensilios = listaUtensilios;
+    }
+
+    public List<Paso> getPasos() {
+        return pasos;
+    }
+
+    public void setPasos(List<Paso> pasos) {
+        this.pasos = pasos;
+    }
     
 
     @Override
@@ -135,9 +164,9 @@ public class Receta {
 
     @Override
     public String toString() {
-        return "Receta{" + "id=" + id + ", titulo=" + titulo + ", descripcion=" + descripcion + ", tiempoElaboracion=" + tiempoElaboracion + ", dificultad=" + dificultad + ", valoracionMedia=" + valoracionMedia + ", numValoracines=" + numValoracines + '}';
+        return "Receta{" + "id=" + id + ", titulo=" + titulo + ", imagenNombre=" + imagenNombre + ", descripcion=" + descripcion + ", tiempoElaboracion=" + tiempoElaboracion + ", dificultad=" + dificultad + ", valoracionMedia=" + valoracionMedia + ", numValoracines=" + numValoracines + ", listaIngredientes=" + listaIngredientes + ", listaUtensilios=" + listaUtensilios + ", pasos=" + pasos + '}';
     }
-        
-    
+
+  
     
 }
