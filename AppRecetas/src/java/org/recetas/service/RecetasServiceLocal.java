@@ -28,6 +28,6 @@ public interface RecetasServiceLocal {
     
     public List<Paso> getListaPasos ( int idReceta);
     
-    
+    public void addValoracion(int idReceta, int valoracion);
     
 }

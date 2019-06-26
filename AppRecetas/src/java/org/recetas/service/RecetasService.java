@@ -72,4 +72,18 @@ public class RecetasService implements RecetasServiceLocal {
         }
         return listaPasos;
     }
+
+    @Override
+    public void addValoracion(int idReceta, int valoracion) {
+        List<Receta> listaRecetas = getListaRecetas();
+        for (Receta receta : listaRecetas) {
+            if (receta != null && receta.getId() == idReceta) {
+                double sumaValoraciones = receta.getValoracionMedia()* (double)receta.getNumValoracines();
+                double media = (sumaValoraciones+valoracion)/((double)receta.getNumValoracines()+1);
+                
+                receta.setValoracionMedia(media);
+                receta.setNumValoracines(receta.getNumValoracines()+1);
+            }
+        }
+    }
 }
