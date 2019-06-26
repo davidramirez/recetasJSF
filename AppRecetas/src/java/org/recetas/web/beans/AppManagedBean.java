@@ -82,7 +82,7 @@ public class AppManagedBean {
             listaPasos.add(paso);
       
              
-             
+         receta.setListaPasos(listaPasos);
          this.listaRecetas.add(receta);
         //Receta 2 
        
