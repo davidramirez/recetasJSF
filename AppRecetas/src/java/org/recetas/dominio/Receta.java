@@ -45,6 +45,8 @@ public class Receta implements Serializable {
         this.descripcion = descripcion;
         this.tiempoElaboracion = tiempoElaboracion;
         this.dificultad = dificultad;
+        this.numValoracines = 1;
+        this.valoracionMedia = 5;
     }
 
     public String getTitulo() {
