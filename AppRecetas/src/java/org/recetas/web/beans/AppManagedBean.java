@@ -11,6 +11,7 @@ import javax.inject.Named;
 import javax.enterprise.context.ApplicationScoped;
 import org.recetas.dominio.Dificultad;
 import org.recetas.dominio.Ingrediente;
+import org.recetas.dominio.Paso;
 import org.recetas.dominio.Receta;
 import org.recetas.dominio.Unidad;
 
@@ -57,10 +58,34 @@ public class AppManagedBean {
         
         receta.setListaUtensilios(listaUtensilios);
         
-        this.listaRecetas.add(receta);
+       
         
+        List<Paso> listaPasos = new ArrayList();
+        
+            // paso 1
+            Paso paso = new Paso(1, "Calentar el aceite en la plancha", "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+                    + " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+                    + "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ", "hamburguesa_paso1.jpg");
+            listaPasos.add(paso);
+            
+            //paso2
+            paso = new Paso(2, "Freir la hamburguesa", "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+                    + " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+                    + "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ", "hamburguesa_paso2.jpg");
+            listaPasos.add(paso);
+            
+            
+            //paso3
+            paso = new Paso(3, "Montar la hamburguesa", "Lorem ipsum dolor sit amet, consectetur adipiscing elit,"
+                    + " sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, "
+                    + "quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. ", "hamburguesa_paso3.jpg");
+            listaPasos.add(paso);
+      
+             
+             
+         this.listaRecetas.add(receta);
         //Receta 2 
-        
+       
         receta = new Receta(2, "Espagueti Carbonara", 
                 "Una deliciosa pasta italiana para 2 personas", 
                 15, Dificultad.BAJA);
@@ -90,13 +115,15 @@ public class AppManagedBean {
         receta.setListaUtensilios(listaUtensilios);
         
         this.listaRecetas.add(receta);
-        
+  
     }
 
     public List<Receta> getListaRecetas() {
         return listaRecetas;
     }
 
-   
+    public void setListaRecetas(List<Receta> listaRecetas) {
+        this.listaRecetas = listaRecetas;
+    }
     
 }
