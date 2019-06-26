@@ -9,34 +9,52 @@ import java.util.List;
 import javax.ejb.Stateless;
 import org.recetas.dominio.Ingrediente;
 import org.recetas.dominio.Receta;
+import org.recetas.web.beans.AppManagedBean;
 
-/**
- *
- * @author SISTEMAS
- */
 @Stateless
 public class RecetasService implements RecetasServiceLocal {
 
+    private AppManagedBean appMB;
+
     @Override
     public List<Receta> getListaRecetas() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Receta> listaRecetas = appMB.getListaRecetas();
+        return listaRecetas;
     }
 
     @Override
     public Receta getRecetaById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Receta recetaById = null;
+        List<Receta> listaRecetas = appMB.getListaRecetas();
+        for (Receta receta : listaRecetas) {
+            if (receta != null && receta.getId() == id) {
+                recetaById = receta;
+            }
+        }
+        return recetaById;
     }
 
     @Override
     public List<Ingrediente> getListaIngredientes(int idReceta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Ingrediente> listaIngredientes = null;
+        List<Receta> listaRecetas = appMB.getListaRecetas();
+        for (Receta receta : listaRecetas) {
+            if (receta != null && receta.getId() == idReceta) {
+                listaIngredientes = receta.getListaIngredientes();
+            }
+        }
+        return listaIngredientes;
     }
 
     @Override
     public List<String> getListaUtensilios(int idReceta) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<String> listaUtensilios = null;
+        List<Receta> listaRecetas = appMB.getListaRecetas();
+        for (Receta receta : listaRecetas) {
+            if (receta != null && receta.getId() == idReceta) {
+                listaUtensilios = receta.getListaUtensilios();
+            }
+        }
+        return listaUtensilios;
     }
-
-    // Add business logic below. (Right-click in editor and choose
-    // "Insert Code > Add Business Method")
 }
