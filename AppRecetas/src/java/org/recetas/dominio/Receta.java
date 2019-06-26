@@ -5,13 +5,14 @@
  */
 package org.recetas.dominio;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author SISTEMAS
  */
-public class Receta {
+public class Receta implements Serializable {
     
     private int id;
     

@@ -5,11 +5,13 @@
  */
 package org.recetas.dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author SISTEMAS
  */
-public class Paso {
+public class Paso implements Serializable {
     
     private int num;
     

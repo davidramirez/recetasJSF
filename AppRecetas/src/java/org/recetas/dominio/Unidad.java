@@ -11,5 +11,5 @@ package org.recetas.dominio;
  */
 public enum Unidad {
     
-    Kg, und, cucharadita, litro; 
+    gr, und, cucharadita, ml; 
 }

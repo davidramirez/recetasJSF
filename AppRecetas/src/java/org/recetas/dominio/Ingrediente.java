@@ -5,11 +5,13 @@
  */
 package org.recetas.dominio;
 
+import java.io.Serializable;
+
 /**
  *
  * @author SISTEMAS
  */
-public class Ingrediente {
+public class Ingrediente implements Serializable {
     
     private String nombre;
     
