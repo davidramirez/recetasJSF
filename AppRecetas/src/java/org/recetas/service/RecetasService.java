@@ -7,6 +7,7 @@ package org.recetas.service;
 
 import java.util.List;
 import javax.ejb.Stateless;
+import javax.inject.Inject;
 import org.recetas.dominio.Ingrediente;
 import org.recetas.dominio.Receta;
 import org.recetas.web.beans.AppManagedBean;
@@ -14,6 +15,7 @@ import org.recetas.web.beans.AppManagedBean;
 @Stateless
 public class RecetasService implements RecetasServiceLocal {
 
+    @Inject
     private AppManagedBean appMB;
 
     @Override
