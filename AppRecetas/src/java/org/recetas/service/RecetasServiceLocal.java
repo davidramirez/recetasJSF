@@ -8,6 +8,7 @@ package org.recetas.service;
 import java.util.List;
 import javax.ejb.Local;
 import org.recetas.dominio.Ingrediente;
+import org.recetas.dominio.Paso;
 import org.recetas.dominio.Receta;
 
 /**
@@ -24,6 +25,8 @@ public interface RecetasServiceLocal {
     public List<Ingrediente> getListaIngredientes(int idReceta);
     
     public List<String> getListaUtensilios (int idReceta);
+    
+    public List<Paso> getListaPasos ( int idReceta);
     
     
     
