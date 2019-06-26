@@ -115,6 +115,8 @@ public class AppManagedBean {
         receta.setListaUtensilios(listaUtensilios);
         
         this.listaRecetas.add(receta);
+        
+   
   
     }
 
