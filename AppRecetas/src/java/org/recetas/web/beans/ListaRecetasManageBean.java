@@ -15,11 +15,20 @@ public class ListaRecetasManageBean implements Serializable{
     @EJB
     private RecetasServiceLocal recetasServiceLocal;
     
+    private List<Receta> listaRecetas;
+    
     public ListaRecetasManageBean() {
     }
     
-    public List<Receta> getAll(){
-        return recetasServiceLocal.getListaRecetas();
+
+
+    public List<Receta> getListaRecetas() {
+        this.listaRecetas=recetasServiceLocal.getListaRecetas();
+        return listaRecetas;
     }
+
+  
+    
+    
     
 }
