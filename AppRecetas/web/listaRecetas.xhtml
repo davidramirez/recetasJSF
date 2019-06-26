@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="./WEB-INF/plantillas/plantillaPrincipal.xhtml"
+                xmlns:rich="http://richfaces.org/rich"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="title">
+        <h1>Recetas</h1>
+    </ui:define>
+    
+    <ui:define name="content">
+       
+  
+      
+        <rich:dataTable value="#{listaRecetasMB.listaRecetas}" 
+                                var="receta" id="dtlistaRecetas" rows="2">
+
+                    <rich:column sortBy="#{receta.titulo}">
+                        <f:facet name="header">
+                            Titulo
+                        </f:facet>
+                        <h:outputText value="#{receta.titulo}"/>
+                    </rich:column>
+            
+                    <rich:column sortBy="#{receta.tiempoElaboracion}">
+                        <f:facet name="header">
+                            Tiempo
+                        </f:facet>
+                     
+                        <i class="far fa-clock"></i> #{receta.tiempoElaboracion} Minutos 
+                    </rich:column>
+                    
+                    <rich:column sortBy="#{receta.dificultad}">
+                        <f:facet name="header">
+                            Dificultad
+                        </f:facet>
+                        <span class="bg-#{receta.dificultad.color}">Dificultad: #{receta.dificultad}</span> 
+                      
+                    </rich:column>
+            
+                    <rich:column>
+                        <f:facet name="header">
+                            Imagen
+                        </f:facet>
+          
+                        <h:graphicImage  styleClass="img-fluid" class="img-rounded"  width="100px"  library="img" name="#{receta.imagenNombre}"/>
+                    </rich:column>
+                   
+
+                    <f:facet name="footer">
+                        <rich:dataScroller />
+                    </f:facet>
+                </rich:dataTable>  
+    </ui:define>
+
+</ui:composition>
