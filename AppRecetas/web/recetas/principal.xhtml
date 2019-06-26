@@ -15,24 +15,99 @@
 
 
     <ui:define name="content">
-        <h1>#{recetaMB.receta.titulo}</h1>
-        <hr/>
-        <div class="row">
-            <div class="col-12 col-md-4">
-                <p>#{recetaMB.receta.descripcion}</p>
+        <h:panelGroup id="principalReceta">
+            <h:panelGroup rendered="#{recetaMB.pantallaPrincipal}">
+                <h1>#{recetaMB.receta.titulo}</h1>
+                <hr/>
+                <div class="row">
+                    <div class="col-12 col-md-4">
+                        <p>#{recetaMB.receta.descripcion}</p>
 
-                <div class="alert border-primary text-center p-1"> 
-                    <span class="bg-#{recetaMB.receta.dificultad.color}">Dificultad: #{recetaMB.receta.dificultad}</span> 
-                    <br/>
-                    <i class="far fa-clock"></i> #{recetaMB.receta.tiempoElaboracion} Minutos
+                        <div class="alert border-primary text-center p-1"> 
+                            <span class="bg-#{recetaMB.receta.dificultad.color}">Dificultad: #{recetaMB.receta.dificultad}</span> 
+                            <br/>
+                            <i class="far fa-clock"></i> #{recetaMB.receta.tiempoElaboracion} Minutos
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-8">
+                        <h:graphicImage styleClass="img-fluid" library="img" name="#{recetaMB.receta.imagenNombre}"/>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-8">
-                <h:graphicImage styleClass="img-fluid" library="img" name="#{recetaMB.receta.imagenNombre}"/>
-            </div>
-        </div>
 
-        <hr/>
+                <hr/>
+
+                <h:form>
+                    <div class="row">
+                        <div class="col-12 col-md-4">
+                            <a4j:commandButton value="Lista de Utensilios" styleClass="btn btn-primary btn-block m-1" render="principalReceta recetaListaUtensilios" action="#{recetaMB.cambiarPantalla(1)}"/>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <a4j:commandButton value="Lista de Ingredientes" styleClass="btn btn-primary btn-block m-1" render="principalReceta recetaListaUtensilios" action="#{recetaMB.cambiarPantalla(2)}"/>
+                        </div>
+
+                        <div class="col-12 col-md-4">
+                            <a4j:commandButton value="Pasos" styleClass="btn btn-primary btn-block m-1" render="principalReceta recetaListaUtensilios" action="#{recetaMB.cambiarPantalla(3)}"/>
+                        </div>
+
+                    </div>
+                </h:form>
+            </h:panelGroup>
+        </h:panelGroup>
+
+        <h:panelGroup id="recetaListaUtensilios">
+            <h:panelGroup rendered="#{recetaMB.pantallaListaUtensilios}">
+                <div class="row">
+                    <div class="col-1">
+                        <h:form>
+                            <a4j:commandLink styleClass="text-center h2 align-middle" render="principalReceta recetaListaUtensilios" action="#{recetaMB.cambiarPantalla(0)}">
+                                <i class="fas fa-arrow-left text-primary"></i>
+                            </a4j:commandLink>
+                        </h:form>
+                    </div>
+                    <div class="col-11">
+                        <h2>Utensilios para preparar #{recetaMB.receta.titulo}</h2>
+                    </div>
+                </div>
+                <div class="table-responsive-md">
+                    <h:dataTable value="#{recetaMB.utensiliosDeReceta}" var="utensilio" cellpadding="10" styleClass="table table-striped">
+                        <h:column>
+                            #{utensilio}
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </h:panelGroup>
+        </h:panelGroup>
+
+        <h:panelGroup id="recetaListaIngredientes">
+            <h:panelGroup rendered="#{recetaMB.pantallaListaIngredientes}">
+                <div class="row">
+                    <div class="col-1">
+                        <h:form>
+                            <a4j:commandLink styleClass="text-center h2 align-middle" render="principalReceta recetaListaIngredientes" action="#{recetaMB.cambiarPantalla(0)}">
+                                <i class="fas fa-arrow-left text-primary"></i>
+                            </a4j:commandLink>
+                        </h:form>
+                    </div>
+                    <div class="col-11">
+                        <h2>Utensilios para preparar #{recetaMB.receta.titulo}</h2>
+                    </div>
+                </div>
+                <div class="table-responsive-md">
+                    <h:dataTable value="#{recetaMB.utensiliosDeReceta}" var="utensilio" cellpadding="10" styleClass="table table-striped">
+                        <h:column>
+                            #{utensilio}
+                        </h:column>
+                    </h:dataTable>
+                </div>
+            </h:panelGroup>
+        </h:panelGroup>
+
+        <h:panelGroup id="recetaPasos">
+            <h:panelGroup rendered="#{recetaMB.pantallaPasos}">
+
+            </h:panelGroup>
+        </h:panelGroup>
 
     </ui:define>
 
