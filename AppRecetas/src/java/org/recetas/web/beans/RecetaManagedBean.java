@@ -9,6 +9,8 @@ import java.io.Serializable;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -42,6 +44,11 @@ public class RecetaManagedBean implements Serializable {
     private int numPaso = 1;
     private List<Paso> listaPasos;
     
+    
+    
+    //Valoración
+    private int valoracionUsuario;
+    
     @EJB
     private RecetasServiceLocal recetasService;
     /**
@@ -55,6 +62,7 @@ public class RecetaManagedBean implements Serializable {
     public void cargaReceta(){
         receta = recetasService.getRecetaById(1);
         //System.out.println("receta" + receta.getTitulo());
+        receta.setValoracionMedia(5.76876987);
     }
 
     public Receta getReceta() {
@@ -67,6 +75,14 @@ public class RecetaManagedBean implements Serializable {
 
     public int getNumPaso() {
         return numPaso;
+    }
+
+    public void setValoracionUsuario(int valoracionUsuario) {
+        this.valoracionUsuario = valoracionUsuario;
+    }
+
+    public int getValoracionUsuario() {
+        return valoracionUsuario;
     }
     
     public boolean isPantallaPrincipal(){
@@ -96,8 +112,8 @@ public class RecetaManagedBean implements Serializable {
             this.numPaso = 1;
             
             this.listaPasos = recetasService.getListaPasos(this.receta.getId());
-            System.out.println("Cargo lista+++++++++++");
-            System.out.println(listaPasos);
+//            System.out.println("Cargo lista+++++++++++");
+//            System.out.println(listaPasos);
         }
     }
     
@@ -108,7 +124,7 @@ public class RecetaManagedBean implements Serializable {
     }
     
     public List<Ingrediente> getIngredientesDeReceta(){
-        System.out.println("getingredientes+++++++++++++++++++");
+        //System.out.println("getingredientes+++++++++++++++++++");
         return recetasService.getListaIngredientes(this.receta.getId());
     }
     
@@ -136,5 +152,17 @@ public class RecetaManagedBean implements Serializable {
     
     public void pasoSiguiente(){
         this.numPaso++;
+    }
+    
+    public void btnValorar(){
+        System.out.println("Guardando valoración");
+        System.out.println(this.valoracionUsuario);
+        FacesContext fc = FacesContext.getCurrentInstance();
+        recetasService.addValoracion(this.receta.getId(), this.valoracionUsuario);
+        String msg = "La valoración ha sido guardada con éxito";
+        fc.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, msg, msg));
+        
+        //Volver a la pantalla inicial
+        this.cambiarPantalla(PRINCIPAL_RECETA);
     }
 }

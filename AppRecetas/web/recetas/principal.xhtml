@@ -28,6 +28,17 @@
                             <br/>
                             <i class="far fa-clock"></i> #{recetaMB.receta.tiempoElaboracion} Minutos
                         </div>
+
+                        <hr/>
+
+                        <span>Valoración:</span>
+                        <div class="progress" style="height: 30px;">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: #{recetaMB.receta.valoracionMedia*10}%;"> 
+                                <h:outputText value="#{recetaMB.receta.valoracionMedia}">
+                                    <f:convertNumber maxFractionDigits="1"/>
+                                </h:outputText>  / 10
+                            </div>
+                        </div>
                     </div>
                     <div class="col-12 col-md-8">
                         <h:graphicImage styleClass="img-fluid" library="img" name="#{recetaMB.receta.imagenNombre}"/>
@@ -154,6 +165,11 @@
                                 <i class="fas fa-arrow-right text-success"></i>
                             </a4j:commandLink>
                         </h:form>
+                        <h:form rendered="#{!recetaMB.haySiguiente()}">
+                            <a4j:commandLink styleClass="btn btn-success btn-block text-center h2 align-middle text-center" render="recetaPasos pantallaValorar" action="#{recetaMB.cambiarPantalla(4)}">
+                                Valorar <br/> receta
+                            </a4j:commandLink>
+                        </h:form>
                     </div>
                 </div>
             </h:panelGroup>
@@ -161,7 +177,31 @@
 
         <h:panelGroup id="pantallaValorar">
             <h:panelGroup rendered="#{recetaMB.pantallaValorar}">
+                <div class="row">
+                    <div class="col-1">
+                        <h:form>
+                            <a4j:commandLink styleClass="text-center h2 align-middle" render="principalReceta pantallaValorar" action="#{recetaMB.cambiarPantalla(0)}">
+                                <i class="fas fa-arrow-left text-primary"></i>
+                            </a4j:commandLink>
+                        </h:form>
+                    </div>
+                    <div class="col-11">
+                        <h2>Valora la receta #{recetaMB.receta.titulo}</h2>
+                    </div>
 
+                    <div class="row">
+                        <h:form id="formValorar">
+                            <div class="form-group">
+                                <label for="valoracion">Introduce una valoración del 1 al 10:</label>
+                                <h:inputText value="#{recetaMB.valoracionUsuario}" class="form-control" id="valoracion" required="true" requiredMessage="El campo es necesario" validatorMessage="La valoración tiene que ser entre 1 y 10">
+                                    <f:validateDoubleRange minimum="1" maximum="10"/>
+                                </h:inputText>
+                                <rich:message for="valoracion"/>
+                            </div>
+                            <a4j:commandButton value="Enviar valoración" styleClass="btn btn-success btn-block" execute="@Form" render="principalReceta pantallaValorar" action="#{recetaMB.btnValorar()}"/>
+                        </h:form>
+                    </div>
+                </div>
             </h:panelGroup>
         </h:panelGroup>
 
