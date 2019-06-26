@@ -13,28 +13,28 @@ import java.util.List;
  * @author SISTEMAS
  */
 public class Receta implements Serializable {
-    
+
     private int id;
-    
+
     private String titulo;
-    
+
     private String imagenNombre;
-    
+
     private String descripcion;
-    
+
     private int tiempoElaboracion;
-    
+
     private Dificultad dificultad;
-    
+
     private double valoracionMedia;
-    
+
     private int numValoracines;
-    
+
     private List<Ingrediente> listaIngredientes;
-    
+
     private List<String> listaUtensilios;
-    
-    private List<Paso> pasos;
+
+    private List<Paso> listaPasos;
 
     public Receta() {
     }
@@ -46,8 +46,6 @@ public class Receta implements Serializable {
         this.tiempoElaboracion = tiempoElaboracion;
         this.dificultad = dificultad;
     }
-
-    
 
     public String getTitulo() {
         return titulo;
@@ -129,14 +127,13 @@ public class Receta implements Serializable {
         this.listaUtensilios = listaUtensilios;
     }
 
-    public List<Paso> getPasos() {
-        return pasos;
+    public List<Paso> getListaPasos() {
+        return listaPasos;
     }
 
-    public void setPasos(List<Paso> pasos) {
-        this.pasos = pasos;
+    public void setListaPasos(List<Paso> listaPasos) {
+        this.listaPasos = listaPasos;
     }
-    
 
     @Override
     public int hashCode() {
@@ -165,9 +162,7 @@ public class Receta implements Serializable {
 
     @Override
     public String toString() {
-        return "Receta{" + "id=" + id + ", titulo=" + titulo + ", imagenNombre=" + imagenNombre + ", descripcion=" + descripcion + ", tiempoElaboracion=" + tiempoElaboracion + ", dificultad=" + dificultad + ", valoracionMedia=" + valoracionMedia + ", numValoracines=" + numValoracines + ", listaIngredientes=" + listaIngredientes + ", listaUtensilios=" + listaUtensilios + ", pasos=" + pasos + '}';
+        return "Receta{" + "id=" + id + ", titulo=" + titulo + ", imagenNombre=" + imagenNombre + ", descripcion=" + descripcion + ", tiempoElaboracion=" + tiempoElaboracion + ", dificultad=" + dificultad + ", valoracionMedia=" + valoracionMedia + ", numValoracines=" + numValoracines + ", listaIngredientes=" + listaIngredientes + ", listaUtensilios=" + listaUtensilios + ", listaPasos=" + listaPasos + '}';
     }
 
-  
-    
 }

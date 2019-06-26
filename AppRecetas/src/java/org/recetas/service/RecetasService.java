@@ -9,6 +9,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import org.recetas.dominio.Ingrediente;
+import org.recetas.dominio.Paso;
 import org.recetas.dominio.Receta;
 import org.recetas.web.beans.AppManagedBean;
 
@@ -27,7 +28,7 @@ public class RecetasService implements RecetasServiceLocal {
     @Override
     public Receta getRecetaById(int id) {
         Receta recetaById = null;
-        List<Receta> listaRecetas = appMB.getListaRecetas();
+        List<Receta> listaRecetas = getListaRecetas();
         for (Receta receta : listaRecetas) {
             if (receta != null && receta.getId() == id) {
                 recetaById = receta;
@@ -39,7 +40,7 @@ public class RecetasService implements RecetasServiceLocal {
     @Override
     public List<Ingrediente> getListaIngredientes(int idReceta) {
         List<Ingrediente> listaIngredientes = null;
-        List<Receta> listaRecetas = appMB.getListaRecetas();
+        List<Receta> listaRecetas = getListaRecetas();
         for (Receta receta : listaRecetas) {
             if (receta != null && receta.getId() == idReceta) {
                 listaIngredientes = receta.getListaIngredientes();
@@ -51,12 +52,24 @@ public class RecetasService implements RecetasServiceLocal {
     @Override
     public List<String> getListaUtensilios(int idReceta) {
         List<String> listaUtensilios = null;
-        List<Receta> listaRecetas = appMB.getListaRecetas();
+        List<Receta> listaRecetas = getListaRecetas();
         for (Receta receta : listaRecetas) {
             if (receta != null && receta.getId() == idReceta) {
                 listaUtensilios = receta.getListaUtensilios();
             }
         }
         return listaUtensilios;
+    }
+
+    @Override
+    public List<Paso> getListaPasos(int idReceta) {
+        List<Paso> listaPasos = null;
+        List<Receta> listaRecetas = getListaRecetas();
+        for (Receta receta : listaRecetas) {
+            if (receta != null && receta.getId() == idReceta) {
+                listaPasos = receta.getListaPasos();
+            }
+        }
+        return listaPasos;
     }
 }
